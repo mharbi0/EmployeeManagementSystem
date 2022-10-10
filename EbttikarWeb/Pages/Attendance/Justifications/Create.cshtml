@@ -1,0 +1,75 @@
+﻿@page
+@model EmployeeManagement.Pages.Attendance.Justifications.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Justification</h4>
+<hr />
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployeeAttendance.EmployeeId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeAttendance.EmployeeId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployeeAttendance.CheckIn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeAttendance.CheckIn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployeeAttendance.CheckOut)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeAttendance.CheckOut)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployeeAttendance.LateCheckIn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeAttendance.LateCheckIn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployeeAttendance.EarlyCheckOut)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeAttendance.EarlyCheckOut)
+        </dd>
+    </dl>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="EmployeeAttendance.EmployeeId" type="hidden" />
+                <input asp-for="EmployeeAttendance.CheckIn" type="hidden" />
+                <input asp-for="EmployeeAttendance.CheckOut" type="hidden" />
+                <input asp-for="EmployeeAttendance.LateCheckIn" type="hidden" />
+                <input asp-for="EmployeeAttendance.LateCheckIn" type="hidden" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Justification.Reason" class="control-label"></label>
+                <input asp-for="Justification.Reason" class="form-control" />
+                <span asp-validation-for="Justification.Reason" class="text-danger"></span>
+            </div>
+            <p />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+<partial name="_BackToList" />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,72 @@
+﻿@page
+@model EmployeeManagement.Pages.Attendance.IndexModel
+
+@{
+    ViewData["Title"] = "Attendance";
+}
+
+<h1>Your attendance</h1>
+
+<p>
+    <a asp-page="CheckIn" class="btn btn-primary ">
+        <i class="bi bi-bell"></i>&nbsp; Check In Now
+    </a>
+</p>
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeAttendance[0].CheckIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeAttendance[0].CheckOut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeAttendance[0].LateCheckIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeAttendance[0].EarlyCheckOut)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.EmployeeAttendance) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckIn)
+                </td>
+                <td>
+                    @if (item?.CheckOut == null)
+                    {
+                        <a asp-page="./CheckOut" asp-route-checkIn="@item.CheckIn" asp-route-employeeId="@item.EmployeeId" class="btn btn-sm btn-secondary">
+                        <i class="bi bi-bell-slash"></i>&nbsp; Check Out
+                        </a>
+                    } else
+                    {
+                        @Html.DisplayFor(modelItem => item.CheckOut)
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LateCheckIn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EarlyCheckOut)
+                </td>
+                <td>
+                    <div class="w-auto btn-group-sm">
+                        <a asp-page="./Details" asp-route-checkIn="@item.CheckIn" asp-route-employeeId="@item.EmployeeId" class="btn btn-secondary btn-outline-light">
+                            <i class="bi bi-info-circle"></i>&nbsp; Details
+                        </a>
+                        @if(item.LateCheckIn || item.EarlyCheckOut)
+                        {
+                            <a asp-page="Justifications/Create" asp-route-empId="@item.EmployeeId" asp-route-checkInTime="@item.CheckIn" class="btn btn-secondary btn-outline-light">
+                                <i class="bi bi-question-circle"></i>&nbsp; Justify
+                            </a>
+                        }
+                    </div>
+                </td>
+            </tr>
+        
+        }
+    </tbody>
+</table>

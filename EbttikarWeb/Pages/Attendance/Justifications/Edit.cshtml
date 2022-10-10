@@ -1,0 +1,36 @@
+﻿@page
+@model EmployeeManagement.Pages.Attendance.Justifications.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Justification</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Justification.JustificationId" />
+            <div class="form-group">
+                <label asp-for="Justification.Reason" class="control-label"></label>
+                <input asp-for="Justification.Reason" class="form-control" />
+                <span asp-validation-for="Justification.Reason" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">
+                    <i class="bi bi-save2"></i>&nbsp; Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+<partial name="_BackToList" />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

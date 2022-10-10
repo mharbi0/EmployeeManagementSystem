@@ -1,0 +1,42 @@
+﻿@page
+@model EmployeeManagement.Pages.Admin.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="toast-header">Administration Portal</h1>
+
+<h4>Edit Employee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Employee.Id" />
+            <div class="form-group">
+                <label asp-for="Employee.Name" class="control-label"></label>
+                <input asp-for="Employee.Name" class="form-control" />
+                <span asp-validation-for="Employee.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label asp-for="Employee.Admin" class="form-check-label"></label>
+                <input asp-for="Employee.Admin" class="form-check-input" />
+            </div>
+            <p/>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">
+                    <i class="bi bi-save2"></i>&nbsp; Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<hr />
+
+<partial name="_BackToList" />
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
