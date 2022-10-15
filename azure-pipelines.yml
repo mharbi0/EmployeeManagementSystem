@@ -9,7 +9,7 @@ trigger:
 pool:
   vmImage: 'windows-latest'
   demands: 
-  - Agent.Name = 'ubuntu-self-hosted'
+  - Agent.Name -equals 'ubuntu-self-hosted'
 
 
 
