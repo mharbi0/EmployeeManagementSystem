@@ -7,7 +7,11 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-self-hosted'
+  vmImage: 'windows-latest'
+  demands: 
+  - Agent.Name = 'ubuntu-self-hosted'
+
+
 
 variables:
   solution: '**/*.sln'
