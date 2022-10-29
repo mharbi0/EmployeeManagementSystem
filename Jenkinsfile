@@ -9,8 +9,8 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'dotnet restore .//Ebttikar.sln'
-        sh 'dotnet build .//Ebttikar.sln'
+        bat 'dotnet restore .//Ebttikar.sln'
+        bat 'dotnet build .//Ebttikar.sln'
       }
     }
 
