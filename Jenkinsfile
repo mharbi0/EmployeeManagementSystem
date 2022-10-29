@@ -14,5 +14,11 @@ pipeline {
       }
     }
 
+    stage('Publish') {
+      steps {
+        bat 'dotnet publish .//Ebttikar.sln --configuration Release --self-contained  --os "win" --arch "x64"'
+      }
+    }
+
   }
 }
