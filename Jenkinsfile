@@ -19,6 +19,11 @@ pipeline {
         bat 'dotnet publish .//Ebttikar.sln --configuration Release --self-contained  --os "win" --arch "x64"'
       }
     }
+    stage('Generate Zip') {
+      steps {
+        zip(zipFile: './EmployeeManagementSystem.zip', archive: true, dir: './EbttikarWeb/bin/Release/net6.0/win-x64/publish', overwrite: true)
+      }
+    }
 
   }
 }
