@@ -16,7 +16,7 @@ pipeline {
 
     stage('Publish') {
       steps {
-        dotnetPublish(project: './Ebttikar.sln', configuration: 'Release', selfContained: true, option: '--os "win"', option: '--arch "x64"')
+        dotnetPublish(project: './Ebttikar.sln', configuration: 'Release', selfContained: true)
       }
     }
     stage('Generate Zip') {
