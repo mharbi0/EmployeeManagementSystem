@@ -9,19 +9,20 @@ pipeline {
 
     stage('Build') {
       steps {
-        bat 'dotnet restore .//Ebttikar.sln'
-        bat 'dotnet build .//Ebttikar.sln'
+        dotnetRestore(project: './Ebttikar.sln')
+        dotnetBuild(project: './Ebttikar.sln', configuration: 'Release')
       }
     }
 
     stage('Publish') {
       steps {
-        bat 'dotnet publish .//Ebttikar.sln --configuration Release --self-contained  --os "win" --arch "x64"'
+        dotnetPublish(project: './Ebttikar.sln', configuration: 'Release', selfContained: true, options: ['--os "win"', ' --arch "x64"'])
       }
     }
     stage('Generate Zip') {
       steps {
-        zip zipFile: './EmployeeManagementSystem.zip' dir: './EbttikarWeb/bin/Release/net6.0/win-x64/publish' overwrite: true archive: true
+        zip(zipFile: './EmployeeManagementSystem.zip' dir: './EbttikarWeb/bin/Release/net6.0/win-x64/publish' overwrite: true archive: true)
+        // zip archive: true, dir: '/pathToDirInWorkspace', glob: '', zipFile: 'nameOfFile'
     }
 
   }
