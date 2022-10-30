@@ -21,7 +21,7 @@ pipeline {
     }
     stage('Generate Zip') {
       steps {
-        zip(zipFile: './EmployeeManagementSystem.zip' dir: './EbttikarWeb/bin/Release/net6.0/win-x64/publish' overwrite: true archive: true)
+        zip(zipFile: './EmployeeManagementSystem.zip', dir: './EbttikarWeb/bin/Release/net6.0/win-x64/publish', overwrite: true, archive: true)
         // zip archive: true, dir: '/pathToDirInWorkspace', glob: '', zipFile: 'nameOfFile'
     }
 
